@@ -1,28 +1,18 @@
 package main
 
 import (
-	"Golpher_Dungeon_Arena/src/structs"
-	"fmt"
+	"Gopher_Dungeon_Arena/src/configuracoes"
+	"Gopher_Dungeon_Arena/src/structs"
+	"log"
+
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 func main() {
-	t1 := structs.Time{}
-	j1 := structs.NovoJogador("Calebe")
-	t1.AdicionnarJogador(j1)
-
-	for _, jogador := range t1.Jogadores {
-		fmt.Println("Jogador: " + jogador.GetNome())
+	game := structs.NovoGame()
+	ebiten.SetWindowSize(configuracoes.LARGURA, configuracoes.ALTURA)
+	ebiten.SetWindowTitle(configuracoes.NOME_JOGO)
+	if err := ebiten.RunGame(&game); err != nil {
+		log.Fatal(err)
 	}
-}
-func loop() {
-	atualiza()
-	desenha()
-}
-
-func atualiza() {
-
-}
-
-func desenha() {
-
 }
